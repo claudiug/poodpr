@@ -40,7 +40,7 @@ end
 
 #TESTING
 
-claudiu = Employee.new('Claudiu', 'intern ruby', 500)
+claudiu = Employee.new('Claudiu', 'intern ruby', 5000)
 p claudiu
 account = Payroll.new
 claudiu.add_observer(account)
