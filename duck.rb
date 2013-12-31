@@ -18,10 +18,10 @@ end
 
 class Pond
   def initialize(numbers_of_ducks)
-    @ducks = []
+    @animals = []
     numbers_of_ducks.times do |i|
-      duck = Duck.new("Duck #{i}")
-      @ducks << duck
+      animal = new_animal("Animal: #{i}")
+      @ducks << animal
     end
   end
 
@@ -50,5 +50,32 @@ class Frog
   end
 end
 
-pond = Pond.new(3)
+class DuckPond < Pond
+  def new_animal(name)
+    Duck.new(name)
+  end
+end
+
+class FrogPond < Pond
+  def initialize(name)
+    @name = name
+  end
+
+  def eat
+    puts "A Frog #{@name} eat"
+  end
+
+  def speak
+    puts "A Frog #{@name} speak"
+  end
+
+  def sleep
+    puts "A frog #{@name} sleeeeeeppp"
+  end
+  def new_animal(name)
+    Frog.new(name)
+  end
+end
+
+pond = FrogPond.new(3)
 pond.simulate_one_day
