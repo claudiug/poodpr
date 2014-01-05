@@ -11,5 +11,8 @@ get '/' do
 end
 
 get '/throw/:type' do
-  #type here
+  player_throw = params[:type].to_sym
+  if @throws.include?(player_throw)
+    halt 403, "you must add: #{@throws}"
+  end
 end
