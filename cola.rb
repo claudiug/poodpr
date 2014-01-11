@@ -8,18 +8,16 @@ end
 
 get '/throw/:type' do
   player_throw = params[:type].to_s
-  compute_throw = @throws.sample
+  computer_choice = @throws.sample
   if @throws.include?(player_throw)
     halt 403, "you must add: #{@throws}"
   end
-  if player_throw == compute_throw
+  if player_throw == computes_throw
     "you tied with computer"
-  elsif compute_throw == @defeat[player_throw]
-    "nice! #{player_throw} beats #{compute_throw}"
+  elsif computer_choice == @defeat[player_throw]
+    "nice! #{player_throw} beats #{computer_choice}"
   else
-    "You just loose #{compute_throw} beats #{player_throw}"
+    "You just loose #{computer_choice} beats #{player_throw}"
   end
-  
-      
 
 end

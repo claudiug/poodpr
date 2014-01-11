@@ -1,4 +1,5 @@
 module StackLike
+  attr_reader :stack
   def stack
     @stack ||= []
   end
@@ -24,4 +25,4 @@ demo = Demo.new
 demo.add_to_stack(1)
 demo.add_to_stack(2)
 demo.add_to_stack(3)
-puts demo
+puts demo.stack
