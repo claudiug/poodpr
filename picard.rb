@@ -2,12 +2,12 @@ require 'logger'
 class Picard
   def make_it_so(log = Logger.new($stdout))
     log.info 'Hmm some tea for me please!'
-    Georgi.new(log).fix_it
+    Georgi.new(log, quit: true).fix_it
   end
 end
 
 class Georgi
-  def initialize(log)
+  def initialize(log, quit:true)
     @log = log
   end
   def fix_it
@@ -27,4 +27,14 @@ class Barclay
   end
 end
 
-p Picard.new.make_it_so
+class NullLogger
+  def debug(*); end
+  def info(*); end
+  def warn(*); end
+  def error(*); end
+  def fatal(*); end
+end
+log = NullLogger.new
+puts 'before'
+p Picard.new.make_it_so(log)
+
